@@ -1,8 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const connectDB = require('./config/db');
 
 //load environment variables from .env file
 dotenv.config();
+
+//connect to mongoDB
+connectDB();
 
 const app = express();
 const port = process.env.PORT || 5000;
