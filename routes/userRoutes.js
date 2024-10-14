@@ -5,6 +5,7 @@ const router = express.Router();
 
 //Register a new User
 router.post('/register', async (req, res) => {
+    console.log('Request received:', req.body); 
     const {name, email, password } = req.body;
 
     try {
@@ -15,14 +16,14 @@ router.post('/register', async (req, res) => {
         }
 
         //Hash the password
-        const salt = await bycrypt.genSalt(10);
+        const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
         //Create new user
         const user = new User ({
             name,
             email,
-            password: hashedpassword,
+            password: hashedPassword,
         })
 
         //Save user to the database
@@ -30,8 +31,9 @@ router.post('/register', async (req, res) => {
 
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: 'Server error' });
     }
 });
 
-module.exports = router;
+module.exports = router

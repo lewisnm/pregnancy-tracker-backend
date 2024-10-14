@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new MongoServerClosedError.Schema({
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -16,5 +16,5 @@ const userSchema = new MongoServerClosedError.Schema({
     },
 });
 
-const User = mongoose.model('User', userschema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;
