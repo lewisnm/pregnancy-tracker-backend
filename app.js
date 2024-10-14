@@ -20,6 +20,9 @@ const port = process.env.PORT || 5000;
 // Use the user routes
 app.use('/api/users', userRoutes);
 
+//pregnancy route
+app.use('/api/pregnancy', require('./routes/pregnancy'));
+
 // Default route for the root
 app.get('/', (req, res) => {
 	res.send('Welcome to the Pregnancy Tracker API');
