@@ -32,6 +32,17 @@ const PregnancySchema = new Schema({
       }
     }
   ],
+  babyGender: {
+    type: String,
+    enum: ['Male', 'Female', 'Unknown'], // Gender, if known
+    default: 'Unknown'
+  },
+  conceptionDate: {
+    type: Date, // Could be calculated or input directly
+  },
+  doctorNotes: {
+    type: String, // Notes from doctor's appointments
+  },
   createdAt: {
     type: Date,
     default: Date.now

@@ -21,7 +21,7 @@ const port = process.env.PORT || 5000;
 app.use('/api/users', userRoutes);
 
 //pregnancy route
-app.use('/api/pregnancy', require('./routes/pregnancy'));
+app.use('/api/pregnancy', require('./routes/pregnancyRoutes'));
 
 // Default route for the root
 app.get('/', (req, res) => {
