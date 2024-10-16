@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
 	res.send('Welcome to the Pregnancy Tracker API');
 });
 
-app.listen(port, () => {
-	console.log(`Server running on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+	app.listen(port, () => {
+	  console.log(`Server running on port ${port}`);
+	});
+  }
+
+module.exports = app;

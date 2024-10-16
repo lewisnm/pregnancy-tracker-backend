@@ -24,6 +24,9 @@ exports.updatePregnancy = async (req, res) => {
   const { id } = req.params;
   const { milestones } = req.body;
 
+  console.log('Pregnancy ID:', id);
+  console.log('Milestones:', milestones);
+
   try {
     const pregnancy = await Pregnancy.findByIdAndUpdate(
       id,
@@ -32,11 +35,14 @@ exports.updatePregnancy = async (req, res) => {
     );
 
     if (!pregnancy) {
+      console.log('Pregnancy not found');
       return res.status(404).json({ success: false, error: 'Pregnancy not found' });
     }
 
+    console.log('Pregnancy updated successfully:', pregnancy);
     res.status(200).json({ success: true, data: pregnancy });
   } catch (error) {
+    console.error('Error updating pregnancy:', error);
     res.status(500).json({ success: false, error: 'Error updating pregnancy' });
   }
 };
